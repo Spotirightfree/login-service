@@ -11,6 +11,13 @@ jobs:
   JMeterTest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: run jmeter on github action
-        uses: sebiboga/run-jmeter-github-action@v0.0.4
+      - name: JMeter Test
+        uses: QAInsights/PerfAction@v3.1
+        with:
+          test-plan-path: test_plan_login-service.jmx
+          args: ""
+      - name: Upload Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: jmeter-results
+          path: result.jtl
