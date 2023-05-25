@@ -143,7 +143,7 @@ jobs:
           
   docker_build:
     runs-on: ubuntu-latest
-    needs: deployJMeter
+    needs: JMeterTest
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
