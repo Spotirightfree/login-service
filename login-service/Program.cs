@@ -1,9 +1,17 @@
+using login_service.Logging;
 using login_service.Services;
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Add logging
+builder.Logging.AddDbLogger(options =>
+{
+    builder.Configuration.GetSection("Logging")
+    .GetSection("Database").GetSection("Options").Bind(options);
+});
+//add cors
 builder.Services.AddCors(c =>
 {
     c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

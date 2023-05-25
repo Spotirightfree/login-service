@@ -59,5 +59,12 @@ namespace login_service.Controllers
         {
             return "Hello World from Login-Service";
         }
+
+        [HttpGet]
+        [Route("LoginCrash")]
+        public string Crashing()
+        {
+            throw new Exception("Whoops Crash!!");
+        }
     }
 }
